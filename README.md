@@ -12,3 +12,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ./watcher.py
 ```
+
+## Tasks
+
+* [ ] Get value
+* [ ] Write value into a file
+* [ ] Create a config file
