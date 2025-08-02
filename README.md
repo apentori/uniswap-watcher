@@ -15,6 +15,12 @@ pip install -r requirements.txt
 
 ## Tasks
 
-* [ ] Get value
-* [ ] Write value into a file
-* [ ] Create a config file
+* [x] Get value
+* [x] Write value into a file over time
+* [x] Create and load config file
+* [x] Reorganize in multiple directories
+* [/] Enable multiple token check
+* [ ] Add Nix Flake
+    * [ ] create package for uniswap lib
+
+

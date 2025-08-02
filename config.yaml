@@ -1,0 +1,20 @@
+provider_url: "https://mainnet.infura.io/v3/"
+api_key: ""
+# Frequency of Call to Uniswap
+frequency: 600
+
+postgres:
+  host: localhost
+  port: 5432
+  username: posrgres
+  password: password
+  database: postgres
+
+token_to_tracks:
+  - pair_name: "SNT-ETH"
+    base:
+      name: "ETH"
+      address: "0x0000000000000000000000000000000000000000"
+    against:
+      name: "SNT"
+      address: "0x744d70FDBE2Ba4CF95131626614a1763DF805B9E"

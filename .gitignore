@@ -1,3 +1,2 @@
 .venv
-#res/
-config.yaml
+__pycache__
