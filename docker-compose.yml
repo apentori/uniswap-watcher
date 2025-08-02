@@ -1,0 +1,25 @@
+---
+services:
+  app:
+    container_name: 'watcher-app'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    command: python /app/watcher.py -d watcher -h watcher-db -P mysecretpassword -k ${INFURA_API_KEY}
+
+  db:
+    container_name: 'watcher-db'
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=watcher
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
