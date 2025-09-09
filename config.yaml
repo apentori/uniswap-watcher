@@ -6,7 +6,7 @@ frequency: 600
 postgres:
   host: localhost
   port: 5432
-  username: posrgres
+  username: postgres
   password: password
   database: postgres
 
@@ -18,3 +18,18 @@ token_to_tracks:
     against:
       name: "SNT"
       address: "0x744d70FDBE2Ba4CF95131626614a1763DF805B9E"
+  - pair_name: "SNT-ETH"
+    base:
+      name: "SNT"
+      address: "0x744d70FDBE2Ba4CF95131626614a1763DF805B9E"
+    against:
+      name: "SNT"
+      address: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+  - pair_name: "ETH-USDT"
+    base:
+      name: "ETH"
+      address: "0x0000000000000000000000000000000000000000"
+    against:
+      name: "USDT"
+      address: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+

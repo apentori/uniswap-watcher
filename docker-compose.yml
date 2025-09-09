@@ -5,9 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - "./config.yaml:/app/config.yaml"
     depends_on:
       - db
-    command: python /app/watcher.py -d watcher -h watcher-db -P mysecretpassword -k ${INFURA_API_KEY}
+    command: python /app/watcher.py 
 
   db:
     container_name: 'watcher-db'

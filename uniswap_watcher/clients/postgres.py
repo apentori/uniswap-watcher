@@ -1,5 +1,6 @@
 import psycopg2
 import logging
+from datetime import datetime
 
 class PostgresClient:
     def __init__(self,host, port, name, user, password):
