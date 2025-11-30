@@ -5,11 +5,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - WATCHER_API_KEY=$INFURA_API_KEY
+      - WATCHER_DB_PASSWORD=mysecretpassword
     volumes:
       - "./config.yaml:/app/config.yaml"
     depends_on:
       - db
-    command: python /app/watcher.py 
+    command: python /app/run.py
 
   db:
     container_name: 'watcher-db'

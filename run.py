@@ -7,11 +7,13 @@ from uniswap_watcher.watcher import watch
 @click.command()
 @click.option("-c", "--config-file", default="config.yaml", help="Path to the config file")
 @click.option("-l", "--log-level",   default="INFO",        help="Log Level")
-def run(config_file, log_level):
+@click.option("-k", "--api-key",      help="Api-key")
+@click.option("-dp", "--db-password", help="Database Password")
+def run(config_file, log_level, api_key, db_password):
     logging.basicConfig(level=log_level.upper())
-    config = load_config(config_file)
+    config = load_config(config_file, api_key, db_password)
     watch(config)
 
 
 if __name__ == "__main__":
-    run()
+    run(auto_envvar_prefix="WATCHER")

@@ -13,11 +13,19 @@ class Config:
     def __init__(self, **entries):
         self.__dict__.update(entries)
 
-def load_config(config_path: str):
+def load_config(config_path: str, api_key: str, db_password: str):
     logging.debug("Loading configuration from file %s", config_path)
     with open(config_path) as f:
         logging.debug("Opening config file %s", config_path)
         c=safe_load(f)
+        logging.info("API KEY : %s", api_key)
+        if api_key:
+            logging.info("Using API KEY from environment variable")
+            c["api_key"] = api_key
+        if db_password:
+            logging.info("Using db password from environment variable")
+            c.get("postgres")["password"] = db_password
+
         config=Config(**c)
         logging.debug("Configuration loaded")
         return config
