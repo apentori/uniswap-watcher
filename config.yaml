@@ -3,10 +3,11 @@ api_key: ""
 # Frequency of Call to Uniswap
 frequency: 600
 
-postgres:
-  host: watcher-db
-  port: 5432
-  username: postgres
+database:
+  type: clickhouse
+  host: db
+  port: 8123
+  username: waatcher
   password: password
   database: watcher
 

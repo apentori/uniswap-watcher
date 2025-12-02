@@ -3,8 +3,14 @@ import logging
 from datetime import datetime
 
 class PostgresClient:
-    def __init__(self,host, port, name, user, password):
-        self.conn = psycopg2.connect(database=name, host=host, user=user, password=password, port=port)
+    def __init__(self, host: str, port: int, name: str, user: str, password: str):
+        self.conn = psycopg2.connect(
+                database=name,
+                host=host,
+                user=user,
+                password=password,
+                port=port
+            )
         self._init_table()
 
     def _init_table(self):

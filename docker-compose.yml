@@ -16,15 +16,17 @@ services:
 
   db:
     container_name: 'watcher-db'
-    image: postgres:13
+    image: clickhouse/clickhouse-server:latest
     environment:
-      - POSTGRES_DB=watcher
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=mysecretpassword
+      - CLICKHOUSE_DB=watcher
+      - CLICKHOUSE_USER=watcher
+      - CLICKHOUSE_PASSWORD=mysecretpassword
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
     ports:
-      - "5432:5432"
+      - "8123:8123"
+      - "9070:9000"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - clickhouse_data:/var/lib/clickhouse
 
 volumes:
-  postgres_data:
+  clickhouse_data:

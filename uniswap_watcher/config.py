@@ -24,7 +24,7 @@ def load_config(config_path: str, api_key: str, db_password: str):
             c["api_key"] = api_key
         if db_password:
             logging.info("Using db password from environment variable")
-            c.get("postgres")["password"] = db_password
+            c.get("database")["password"] = db_password
 
         config=Config(**c)
         logging.debug("Configuration loaded")
