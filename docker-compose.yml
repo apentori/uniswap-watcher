@@ -12,7 +12,6 @@ services:
       - "./config.yaml:/app/config.yaml"
     depends_on:
       - db
-    command: python /app/run.py
 
   db:
     container_name: 'watcher-db'
