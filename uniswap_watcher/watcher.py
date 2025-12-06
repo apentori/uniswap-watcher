@@ -1,27 +1,12 @@
 import logging
 from time import sleep
 
-from uniswap_watcher.clients import PostgresClient, UniswapClient, ClickhouseClient
-
+from uniswap_watcher.clients import DatabaseClient, UniswapClient
 
 def watch(config):
     logging.info("Configuring the clients")
     client = UniswapClient(url=config.provider_url, api_key=config.api_key)
-    dbClient = None
-    if config.database.get("type") == "postgres":
-        dbClient = PostgresClient(
-            config.database.get("host"),
-            config.database.get("port"),
-            config.database.get("database"),
-            config.database.get("username"),
-            config.database.get("password"))
-    else:
-        dbClient = ClickhouseClient(
-            config.database.get("host"),
-            config.database.get("port"),
-            config.database.get("database"),
-            config.database.get("username"),
-            config.database.get("password"))
+    dbClient = DatabaseClient(config.database)
     logging.info("And now my watch begins")
     while True:
         for pair in config.token_to_tracks:

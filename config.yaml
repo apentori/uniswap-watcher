@@ -6,8 +6,8 @@ frequency: 600
 database:
   type: clickhouse
   host: db
-  port: 8123
-  username: waatcher
+  port: 9000
+  username: watcher
   password: password
   database: watcher
 
