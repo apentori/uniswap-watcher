@@ -1,7 +1,9 @@
-from uniswap_watcher.models.price import Price
+from uniswap_watcher.models import Price
 from uniswap_watcher.config import DATE_FORMAT, DEFAULT_PRICE_FORMAT
 from uniswap import Uniswap
 from time import gmtime, strftime
+from datetime import datetime, timedelta
+
 import logging
 
 class UniswapClient:
@@ -20,6 +22,6 @@ class UniswapClient:
         p = Price(token_1=token_1.get("name"),
                 token_2=token_2.get("name"),
                 amount=price / DEFAULT_PRICE_FORMAT,
-                time=strftime(DATE_FORMAT, gmtime()))
+                update_on=datetime.strptime(strftime(DATE_FORMAT, gmtime()), "%Y%m%dT%H:%M:%S"))
         return p
 
