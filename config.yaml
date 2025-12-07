@@ -2,6 +2,7 @@ provider_url: "https://mainnet.infura.io/v3/"
 api_key: ""
 # Frequency of Call to Uniswap
 frequency: 600
+generate_candlestick: false
 
 database:
   type: clickhouse

@@ -46,11 +46,12 @@ def watch(config):
     client = UniswapClient(url=config.provider_url, api_key=config.api_key)
     dbClient = DatabaseClient(config.database)
     logging.info("And now my watch begins")
-    Thread(
-        target=calculate_hourly_candlesticks,
-        args=(dbClient, config.token_to_tracks),
-        daemon=True
-    ).start()
+    if config.generate_candlestick:
+        Thread(
+            target=calculate_hourly_candlesticks,
+            args=(dbClient, config.token_to_tracks),
+            daemon=True
+        ).start()
     while True:
         for pair in config.token_to_tracks:
             logging.info("Watching for pair %s", pair.get("pair_name"))
